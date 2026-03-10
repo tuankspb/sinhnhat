@@ -62,7 +62,6 @@ display:none;
 width:220px;
 border-radius:15px;
 margin:20px auto;
-display:block;
 }
 canvas{
 position:fixed;
@@ -111,10 +110,9 @@ setInterval(createHeart,300);
 </script>
 <script>
 function start(){
-document.getElementById("friendImg").style.display="block";setInterval(createHeart,300);
-}
+document.getElementById("friendImg").style.display="block";
+setInterval(createHeart,300);
 launchConfetti();
-
 }
 
 const canvas=document.getElementById("confetti");
