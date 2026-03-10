@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+font-family:sans-serif;
+text-align:center;
+overflow:hidden;
+}
+
+.card{
+background:white;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+z-index:2;
+}
+
+h1{
+color:#ff4081;
+font-size:35px;
+}
+
+button{
+padding:14px 28px;
+border:none;
+background:#ff4081;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+}
+
+#friendImg{
+margin-top:20px;
+width:260px;
+border-radius:15px;
+display:none;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+pointer-events:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="card">
+
+<h1>🎂 Chúc Mừng Sinh Nhật 🎂</h1>
+
+<p>Chúc bạn luôn vui vẻ và hạnh phúc!</p>
+
+<button onclick="start()">Bấm vào đây 🎉</button>
+
+<br>
+
+<img id="friendImg"
+src="https://i.imgur.com/7R6bK7C.png">
+
+</div>
+
+<audio id="music"
+src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script>
+
+function start(){
+
+document.getElementById("friendImg").style.display="block";
+
+document.getElementById("music").play();
+
+launchConfetti();
+
+}
+
+const canvas=document.getElementById("confetti");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let pieces=[];
+
+function launchConfetti(){
+
+for(let i=0;i<150;i++){
+
+pieces.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+size:Math.random()*10+4,
+
+speed:Math.random()*3+1
+
+});
+
+}
+
+animate();
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+
+pieces.forEach(p=>{
+
+ctx.fillRect(p.x,p.y,p.size,p.size);
+
+p.y+=p.speed;
+
+if(p.y>canvas.height){
+
+p.y=0;
+
+p.x=Math.random()*canvas.width;
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+</script>
+
+</body>
+</html>
