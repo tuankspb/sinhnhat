@@ -58,22 +58,16 @@ border-radius:10px;
 cursor:pointer;
 }
 #friendImg{
-display:none;
 width:220px;
 border-radius:15px;
 margin:20px auto;
+display:none;
 }
 canvas{
 position:fixed;
 top:0;
 left:0;
 pointer-events:none;
-}
-.photo{
-  width:220px;
-  border-radius:15px;
-  display:block;
-  margin:20px auto;
 }
 </style>
 </head>
@@ -105,8 +99,6 @@ setTimeout(()=>{
 heart.remove();
 },4000);
 }
-
-setInterval(createHeart,300);
 </script>
 <script>
 function start(){
